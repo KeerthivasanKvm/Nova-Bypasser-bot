@@ -14,12 +14,46 @@ logger = logging.getLogger(__name__)
 # Initialize bypasser
 bypasser = LinkBypasser()
 
+# Bypass Command Handler
+@Client.on_message(filters.command(["bypass", "b"]) & (filters.private | filters.group))
+@protected_command
+@rate_limit_required
+async def bypass_command(client: Client, message: Message):
+    """Handle /bypass or /b command"""
+    args = message.text.split(maxsplit=1)
+    
+    if len(args) < 2:
+        await message.reply_text(
+            "🔗 **Bypass a Link**\n\n"
+            "**Usage:**\n"
+            "• `/bypass <link>`\n"
+            "• `/b <link>`\n\n"
+            "**Example:**\n"
+            "`/bypass https://example.com/short-link`\n\n"
+            "Or simply send any link without command!"
+        )
+        return
+    
+    url = args[1].strip()
+    
+    # Extract URL if wrapped in markdown
+    url_match = extract_urls(url)
+    if url_match:
+        url = url_match[0]
+    
+    # Process the bypass
+    await process_bypass(client, message, url)
+
 # URL Handler - Main bypass logic
 @Client.on_message(filters.text & filters.private)
 @protected_command
 @rate_limit_required
 async def handle_url(client: Client, message: Message):
     """Handle URL bypass requests"""
+    
+    # Skip if it's a command
+    if message.text.startswith('/'):
+        return
     
     # Extract URLs from message
     urls = extract_urls(message.text)
@@ -30,6 +64,10 @@ async def handle_url(client: Client, message: Message):
     
     # Process first URL
     url = urls[0]
+    await process_bypass(client, message, url)
+
+async def process_bypass(client: Client, message: Message, url: str):
+    """Process bypass request"""
     
     # Check if site is restricted
     if await db.is_site_restricted(url):
