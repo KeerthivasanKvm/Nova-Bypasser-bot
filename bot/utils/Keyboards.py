@@ -17,6 +17,10 @@ class Keyboards:
                 InlineKeyboardButton("📊 My Stats", callback_data="my_stats")
             ],
             [
+                InlineKeyboardButton("🎁 Referral", callback_data="referral_info"),
+                InlineKeyboardButton("📝 Feedback", callback_data="feedback_info")
+            ],
+            [
                 InlineKeyboardButton("❓ Help", callback_data="help"),
                 InlineKeyboardButton("ℹ️ About", callback_data="about")
             ]
