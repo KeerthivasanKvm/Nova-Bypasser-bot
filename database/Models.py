@@ -10,7 +10,7 @@ class User:
     first_name: Optional[str] = None
     is_premium: bool = False
     subscription_end_date: Optional[datetime] = None
-    daily_limit: int = 10
+    daily_limit: int = 8
     links_bypassed_today: int = 0
     total_links_bypassed: int = 0
     joined_date: datetime = field(default_factory=datetime.utcnow)
