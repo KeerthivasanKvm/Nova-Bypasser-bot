@@ -1,4 +1,4 @@
-# 🔗 Link Bypasser Bot
+# 🔗 Nova Link Bypasser Bot
 
 A powerful Telegram bot that bypasses ad links, generates direct download links, and jumps paywalls with advanced features like referral system, feedback management, and MongoDB caching.
 
@@ -308,9 +308,7 @@ If you find this project helpful, please:
 
 ## 📧 Contact
 
-- Telegram: [@YourUsername](https://t.me/YourUsername)
-- Email: your.email@example.com
-- Issues: [GitHub Issues](https://github.com/yourusername/Link-Bypasser-Bot/issues)
+- Telegram: [Nova X Bots](https://t.me/NovaBotz)
 
 ## 🙏 Acknowledgments
 
@@ -321,4 +319,4 @@ If you find this project helpful, please:
 
 ---
 
-Made with ❤️ by [Your Name](https://github.com/yourusername)
+Made with ❤️ by [Nova X Bots](https://github.com/yourusername)
